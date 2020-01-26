@@ -1,0 +1,89 @@
+<MainBoxLayout>:
+    Screen:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: (1,1,1,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Carousel:
+            id: content_box_1
+            loop: True
+            anim_move_duration: 0.1
+            direction: 'right'
+            do_scroll_y: False
+            pos_hint: {'center_x': 0.5, 'top': 1}
+            scroll_distance: 10
+            scroll_timeout: 250
+            size_hint_y: .45
+        Carousel:
+            id: content_box_2
+            loop: True
+            anim_move_duration: 0.1
+            direction: 'right'
+            do_scroll_y: False
+            pos_hint: {'center_x': 0.5, 'top': .55}
+            scroll_distance: 10
+            scroll_timeout: 250
+            size_hint_y: .45
+        Carousel:
+            id: content_box_3
+            loop: True
+            anim_move_duration: 0.1
+            direction: 'right'
+            do_scroll_y: False
+            pos_hint: {'center_x': 0.5, 'top': .1}
+            scroll_distance: 10
+            scroll_timeout: 250
+            size_hint_y: .1
+
+
+<ButtonPage>:
+    on_press: root.parent.parent.parent.parent.click_button()
+    text: ''
+    background_normal: ''
+    background_down: ''
+
+
+<ColorPage>:
+    text: ''
+    background_normal: ''
+    background_down: ''
+
+
+<ColorsRedactor>:
+    BoxLayout:
+        orientation: 'vertical'
+        ScrollView:
+            size_hint_y:.85
+            do_scroll_x: False
+            scroll_distance: 30
+            scroll_timeout: 80
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 15
+                id: colors_box
+        BoxLayout:
+            size_hint_y: 0.1
+            Button:
+                text: "ok"
+                on_press: root.close()
+            Button:
+                text: "refresh"
+                on_press: root.change_colors_button()
+
+
+<ColorRepresentation>:
+    size_hint_y: None
+    height: 60
+    TextInput:
+        id: red
+    TextInput:
+        id: green
+    TextInput:
+        id: blue
+    TextInput:
+        id: transparency
