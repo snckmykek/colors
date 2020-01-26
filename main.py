@@ -13,8 +13,25 @@ from kivy.lang.builder import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
+from kivy.core.window import Window
 
 Builder.load_file('mainscreen2.kv')
+
+
+# Window
+class WindowSettings:
+    size: tuple
+    width: int
+    height: int
+
+    def __init__(self):
+        self.width = Window.width
+        self.height = Window.height
+        self.size = (self.width, self.height)
+
+
+WINDOW = WindowSettings()
+
 
 class ColorPage(Button):
 
@@ -133,6 +150,8 @@ class ColorRepresentation(BoxLayout):
 
     def __init__(self, **kwargs):
         super(ColorRepresentation, self).__init__(**kwargs)
+
+        self.height = round(WINDOW.height / 12)
 
 
 class MainScreenApp(App):
