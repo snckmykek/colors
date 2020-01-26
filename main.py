@@ -93,6 +93,19 @@ class ColorsRedactor(Popup):
             C.ids.transparency.background_color = color
             self.ids.colors_box.add_widget(C)
 
+    def add_color(self):
+        C = ColorRepresentation()
+        color = (1, 1, 1, 1)
+        C.ids.red.text = str(color[0])
+        C.ids.green.text = str(color[1])
+        C.ids.blue.text = str(color[2])
+        C.ids.transparency.text = str(color[3])
+        C.ids.red.background_color = color
+        C.ids.green.background_color = color
+        C.ids.blue.background_color = color
+        C.ids.transparency.background_color = color
+        self.ids.colors_box.add_widget(C)
+
     def change_colors_button(self):
         self.refresh_colors_list()
         self.change_colors()
